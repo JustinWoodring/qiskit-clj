@@ -12,6 +12,8 @@ jobs:
       # You may pin to the exact commit or the version.
       # uses: DeLaGuardo/setup-clojure@3fe9b3ae632c6758d0b7757b0838606ef4287b08
       uses: DeLaGuardo/setup-clojure@13.4
+      with:
+        tools-deps: latest
 
     - name: Setup Maven
       uses: hb0730/maven-action@v1.0.2
