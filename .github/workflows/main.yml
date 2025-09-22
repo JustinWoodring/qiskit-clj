@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy_to_clojars:
+    name: Deploy to Clojars
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup Clojure
+      # You may pin to the exact commit or the version.
+      # uses: DeLaGuardo/setup-clojure@3fe9b3ae632c6758d0b7757b0838606ef4287b08
+      uses: DeLaGuardo/setup-clojure@13.4
+
+    - name: Setup Maven
+      uses: hb0730/maven-action@v1.0.2
+
+    - name: Build Jar
+      run: clj -T:build jar
+
+    - name: Maven Deploy
+      run: mvn deploy
+          
