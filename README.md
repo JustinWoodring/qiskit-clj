@@ -51,7 +51,7 @@ pip install qiskit qiskit-aer qiskit-ibm-runtime
 
 ;; Execute and get results
 (def results (backends/execute-circuit bell-circuit))
-(println \"Bell state results:\" results)
+(println "Bell state results:" results)
 ```
 
 ## Core Modules
@@ -111,8 +111,8 @@ Backend management for simulators and hardware.
 (def counts (backends/execute-circuit circuit aer-backend))
 
 ;; IBM Quantum hardware
-(def service (backends/ibm-quantum-service \"your-token\"))
-(def hardware (backends/get-ibm-backend service \"ibm_brisbane\"))
+(def service (backends/ibm-quantum-service "your-token"))
+(def hardware (backends/get-ibm-backend service "ibm_brisbane"))
 ```
 
 ### `com.justinwoodring.qiskit-clj.quantum-info`
@@ -221,7 +221,7 @@ Quantum information theory utilities.
 ```clojure
 (def noise-model (backends/noise-model))
 (def depol-error (backends/depolarizing-error 0.01 1))
-(backends/add-quantum-error noise-model depol-error [\"x\" \"h\"])
+(backends/add-quantum-error noise-model depol-error ["x" "h"])
 
 (def noisy-backend
   (backends/aer-simulator {:noise_model noise-model}))
@@ -296,13 +296,13 @@ To use IBM Quantum hardware:
 3. Use the token with the backends module:
 
 ```clojure
-(def service (backends/ibm-quantum-service \"your-token-here\"))
-(def backend (backends/get-ibm-backend service \"ibm_brisbane\"))
+(def service (backends/ibm-quantum-service "your-token-here"))
+(def backend (backends/get-ibm-backend service "ibm_brisbane"))
 ```
 
 ## License
 
-This project is licensed under the Eclipse Public License 2.0 - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
