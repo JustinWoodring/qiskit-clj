@@ -8,6 +8,9 @@ jobs:
     name: Deploy to Clojars
     runs-on: ubuntu-latest
     steps:
+    - name: Install Dependencies
+      run: sudo apt install -y rlwrap
+    
     - name: Setup Clojure
       # You may pin to the exact commit or the version.
       # uses: DeLaGuardo/setup-clojure@3fe9b3ae632c6758d0b7757b0838606ef4287b08
