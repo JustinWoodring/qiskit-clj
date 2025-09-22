@@ -2,7 +2,15 @@
   (:require [clojure.tools.build.api :as b]))
 
 (def lib 'com.justinwoodring/qiskit-clj)
-(def version (format "0.1.0-SNAPSHOT"))
+
+(defn get-version []
+  (let [git-tag (try (b/git-process {:git-args "describe --tags --exact-match"})
+                     (catch Exception _ nil))]
+    (if git-tag
+      (str git-tag)
+      (format "0.1.%s-SNAPSHOT" (b/git-count-revs nil)))))
+
+(def version (get-version))
 (def class-dir "target/classes")
 (def basis (b/create-basis {:project "deps.edn"}))
 (def jar-file (format "target/%s-%s.jar" (name lib) version))
