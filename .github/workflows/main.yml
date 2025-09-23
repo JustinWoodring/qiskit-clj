@@ -18,7 +18,7 @@ jobs:
 
     - name: Install Dependencies
       run: |
-        sudo apt install -y rlwrap python-pip3
+        sudo apt install -y rlwrap python3-pip
         sudo pip install qiskit qiskit-aer --break-system-packages
 
     - name: Setup Clojure
