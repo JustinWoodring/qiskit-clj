@@ -17,7 +17,9 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install Dependencies
-      run: sudo apt install -y rlwrap
+      run: |
+        sudo apt install -y rlwrap python-pip3
+        sudo pip install qiskit qiskit-aer --break-system-packages
 
     - name: Setup Clojure
       uses: DeLaGuardo/setup-clojure@13.4
