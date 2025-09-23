@@ -1,4 +1,5 @@
 # qiskit-clj
+[![Clojars Project](https://img.shields.io/clojars/v/com.justinwoodring/qiskit-clj.svg)](https://clojars.org/com.justinwoodring/qiskit-clj)
 
 A comprehensive Clojure facade library for [Qiskit](https://qiskit.org/), providing idiomatic Clojure interfaces for quantum computing with IBM's quantum framework.
 
@@ -16,7 +17,7 @@ A comprehensive Clojure facade library for [Qiskit](https://qiskit.org/), provid
 Add the following dependency to your `deps.edn`:
 
 ```clojure
-{:deps {com.justinwoodring/qiskit-clj {:mvn/version \"0.1.0-SNAPSHOT\"}}}
+{:deps {com.justinwoodring/qiskit-clj {:mvn/version "0.1.0-SNAPSHOT"}}}
 ```
 
 ### Prerequisites
