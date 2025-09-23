@@ -24,7 +24,7 @@ jobs:
     - name: Setup Clojure
       uses: DeLaGuardo/setup-clojure@13.4
       with:
-        tools-deps: latest
+        cli: latest
 
     - name: Run Tests
       run: clj -X:test
@@ -46,7 +46,7 @@ jobs:
     - name: Setup Clojure
       uses: DeLaGuardo/setup-clojure@13.4
       with:
-        tools-deps: latest
+        cli: latest
 
     - name: Deploy to Clojars
       run: clj -T:build deploy
@@ -71,7 +71,7 @@ jobs:
     - name: Setup Clojure
       uses: DeLaGuardo/setup-clojure@13.4
       with:
-        tools-deps: latest
+        cli: latest
 
     - name: Deploy Release to Clojars
       run: clj -T:build deploy
