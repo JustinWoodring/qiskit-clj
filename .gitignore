@@ -6,3 +6,4 @@
 .claude
 classes
 target
+hs_err*

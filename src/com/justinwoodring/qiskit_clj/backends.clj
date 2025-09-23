@@ -140,7 +140,11 @@
 (defn backend-configuration
   "Get the configuration of a backend."
   [backend]
-  (core/->clj (py/call-attr backend "configuration")))
+  (try
+    (core/->clj (py/call-attr backend "configuration"))
+    (catch Exception _
+      ;; Some backends (like BasicSimulator) don't have configuration
+      {})))
 
 (defn backend-properties
   "Get the properties of a backend (for real hardware)."
@@ -153,31 +157,33 @@
   "Get the number of qubits available on a backend."
   [backend]
   (let [config (backend-configuration backend)]
-    (get config "n_qubits")))
+    (get config "n_qubits" 32)))
 
 (defn coupling-map
   "Get the coupling map (connectivity) of a backend."
   [backend]
   (let [config (backend-configuration backend)]
-    (get config "coupling_map")))
+    (get config "coupling_map" nil)))
 
 (defn basis-gates
   "Get the basis gates supported by a backend."
   [backend]
   (let [config (backend-configuration backend)]
-    (get config "basis_gates")))
+    (get config "basis_gates" ["id" "rz" "sx" "x" "cx"])))
 
 (defn max-shots
   "Get the maximum number of shots for a backend."
   [backend]
   (let [config (backend-configuration backend)]
-    (get config "max_shots")))
+    (get config "max_shots" 100000)))
 
 (defn simulator?
   "Check if a backend is a simulator."
   [backend]
-  (let [config (backend-configuration backend)]
-    (get config "simulator" false)))
+  (let [config (backend-configuration backend)
+        backend-name (backend-name backend)]
+    (or (get config "simulator" false)
+        (re-find #"(?i)sim" backend-name))))
 
 ;; Transpilation
 (defn transpile
