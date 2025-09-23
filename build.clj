@@ -23,7 +23,20 @@
                 :lib lib
                 :version version
                 :basis basis
-                :src-dirs ["src"]})
+                :src-dirs ["src"]
+                :pom-data [[:description "Clojure wrapper for Qiskit quantum computing framework"]
+                           [:url "https://github.com/justinwoodring/qiskit-clojure"]
+                           [:licenses
+                            [:license
+                             [:name "MIT License"]
+                             [:url "https://opensource.org/licenses/MIT"]]]
+                           [:developers
+                            [:developer
+                             [:name "Justin Woodring"]]]
+                           [:scm
+                            [:url "https://github.com/justinwoodring/qiskit-clojure"]
+                            [:connection "scm:git:https://github.com/justinwoodring/qiskit-clojure.git"]
+                            [:developerConnection "scm:git:ssh://git@github.com/justinwoodring/qiskit-clojure.git"]]]})
   (b/copy-dir {:src-dirs ["src" "resources"]
                :target-dir class-dir})
   (b/jar {:class-dir class-dir
